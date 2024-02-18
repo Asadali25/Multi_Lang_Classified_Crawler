@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <script src="{{ url_for('static', filename='js/FileUpload.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/FileProcess.js') }}"></script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <p>MULTI LANG CLASSIFIED CRAWLER</p>
+      </div>
+    </div>
+    <div class="main-wrapper">
+      <div class="title-main" id="title">
+        <h1 id="main-title">Upload Excel File Here</h1>
+      </div>
+      <div id="upload-container" class="upload-container">
+        <form class="file-upload-form">
+          <label for="file-input" class="file-upload-label">
+            <div class="file-upload-design">
+              <svg viewBox="0 0 640 512" height="1em">
+                <path
+                  d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                ></path>
+              </svg>
+              <p>Drag and Drop</p>
+              <p>or</p>
+              <span class="browse-button">Browse file</span>
+            </div>
+            <input id="file-input" type="file" accept=".xlsx"/>
+          </label>
+        </form>
+      </div>
+      <div class="progress">
+        <img
+        id="loading-gif"
+        src="{{ url_for('static', filename='images/upload.gif') }}"
+        alt="Loading..."
+        style="display: none"
+      />
+      <img
+        id="success-gif"
+        src="{{ url_for('static', filename='images/success.gif') }}"
+        alt="Success!"
+        style="display: none"
+      />
+      <img
+        id="processing-gif"
+        src="{{ url_for('static', filename='images/loading.gif') }}"
+        alt="processing"
+        style="display: none"
+      />
+      <!-- Form -->
+      <div class="myform hidden" id="myForm">
+        <form>
+          <label class="radio-button">
+            <input type="radio" name="example-radio" value="qa" id="qainput">
+            <span class="radio"></span>
+            QA Testing
+          </label>
+          <label class="radio-button">
+            <input type="radio" name="example-radio" value="complete" id="completefile" checked>
+            <span class="radio"></span>
+            Complete File
+          </label>
+          <div class="percentage-input hidden">
+            <label for="percentage">Row %</label>
+            <input type="number" id="percentage" name="percentage" />
+          </div>
+          <div class="textarea">
+            <textarea id="prompt" name="prompt" rows="10" cols="50" placeholder="Prompt..."></textarea>
+          </div>
+        </form>
+      </div>
+      <!-- Form End -->
+      <div class="exc-button hidden">
+        <button class="button" id="exc-btn">
+          Proceed Next
+          <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+            <path
+              clip-rule="evenodd"
+              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+              fill-rule="evenodd"
+            ></path>
+          </svg>
+        </button>     
+      </div>
+      <a Download href="" class="button hidden" id="download-btn" download="updated_excel_file.xlsx"> Download File </a>
+      </div>
+    </div>
+    <div class="circle circle-rose"></div>
+    <div class="circle circle-purple"></div>
+  </body>
+</html>

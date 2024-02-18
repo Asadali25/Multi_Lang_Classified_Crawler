@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form</title>
+<style>
+  /* Adjust styles as needed */
+  .radio-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .radio-container label {
+    margin-right: 20px;
+  }
+
+  #percentageInput {
+    display: none;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<form>
+  <div class="radio-container">
+    <label>
+      <input type="radio" name="option" value="qa_testing">
+      QA Testing
+    </label>
+    <div id="percentageInput">
+      <label for="percentage">Percentage of Rows:</label>
+      <input type="number" id="percentage" name="percentage">
+    </div>
+  
+  </div>
+  <div class="radio-container">
+    <label>
+      <input type="radio" name="option" value="complete_file">
+      Complete File
+    </label>
+  </div>
+  <br>
+  <label for="prompt">Prompt:</label><br>
+  <textarea id="prompt" name="prompt" rows="4" cols="50"></textarea>
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+  document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      if (this.value === 'qa_testing') {
+        document.getElementById('percentageInput').style.display = 'block';
+      } else {
+        document.getElementById('percentageInput').style.display = 'none';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
